@@ -37,15 +37,27 @@ AppAsset::register($this);
         ],
     ]);
     $setting =[
-         ['label' => 'สถานะคอม', 'url' => ['/comstatus']] ,        
+         ['label' => 'สถานะคอม', 'url' => ['/comstatus']] ,      
+         ['label' => 'ประเภทคอม', 'url' => ['/comtype']] ,  
+    ];
+     $register =[
+         ['label' => 'ทะเบียนคอม', 'url' => ['/com']] ,      
+         //['label' => 'ประเภทคอม', 'url' => ['/comstatus']] ,  
+    ];
+      $report =[
+          ['label' => 'รายงานคอมพิวเตอร์', 'url' => ['/reportcomtype']] ,
+          ['label' => 'รายงานปัญหา', 'url' => ['/reportcomservice']] ,
+          ['label' => 'แผนภูมิ', 'url' => ['/chartcom']] ,
+               
     ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'encodeLabels' => FALSE,
         'items' => [
             ['label' => '<span class = "glyphicon glyphicon-home"> หน้าแรก', 'url' => ['/site/index']],
-            ['label' => '<span class = "glyphicon glyphicon-apple"> เกี่ยวกับ', 'url' => ['/site/about']],
-            ['label' => '<span class = "glyphicon glyphicon-user"> ติดต่อ', 'url' => ['/site/contact']],
+            ['label' => 'ลงทะเบียน', 'items' => $register],
+            ['label' => 'ระบบรายงาน', 'items' => $report],
+            
             ['label' => 'ตั้งค่าระบบ', 'items' => $setting],
             Yii::$app->user->isGuest ? (
                 ['label' => '<span class = "glyphicon glyphicon-check">Login', 'url' => ['/site/login']]
